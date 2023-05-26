@@ -93,7 +93,7 @@ const Stake: NextPage = () => {
         <ConnectWallet />
       ) : (
         <>
-          <h2>Your DOS TRASH BIRDS</h2>
+          <h2>Stake Your DOS TRASH BIRDS</h2>
           <div className={styles.tokenGrid}>
             <div className={styles.tokenItem}>
               <h3 className={styles.tokenLabel}>Claimable Rewards</h3>
