@@ -18,6 +18,12 @@
   max-width: 1200px;
 }
 
+.ndivider{
+  width:5px;
+  height:auto;
+  display:inline-block;
+}
+
 .divider {
   width: 50%;
   border-color: grey;
@@ -53,7 +59,7 @@
 
 .optionSelectBox {
   border-radius: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
   width: 48%;
   min-height: 200px;
   height: 100%;
