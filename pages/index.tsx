@@ -212,12 +212,12 @@ function isListEmpty() {
     
 
           <Spacer />
-          <Button
-    
-            onClick={() => clear()}
-          >
+          <Web3Button
+           contractAddress={stakingContractAddress}
+           action={() => clear()}>
+          
             Clear Selected
-          </Button>
+            </Web3Button>
           <Spacer />
      
           </ButtonGroup>
