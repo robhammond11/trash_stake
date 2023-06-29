@@ -50,20 +50,9 @@ const SpacerLarge = styled.div`
    width:10px;
   height:10px;
   
-`  
-const { Alchemy, Network,  NftExcludeFilters } = require("alchemy-sdk");
-
-// Configures the Alchemy SDK
-const config = {
-    apiKey: "nLeTw4kEJZvFG5VNZY1TmgVXeI6cTdBM", // Replace with your API key
-    network: Network.ETH_MAINNET, // Replace with your network
-};
-
-// Creates an Alchemy object instance with the config to use for making requests
-
+` 
 const Stake: NextPage = () => {
- 
-  const alchemy = new Alchemy(config);
+
   const address = useAddress();
   const { contract: nftDropContract } = useContract(
     nftDropContractAddress,
@@ -78,7 +67,7 @@ const Stake: NextPage = () => {
   const [claimableRewards, setClaimableRewards] = useState<BigNumber>();
   const [selected, setSelected] = useState<any[]>([]);  
   const [ownedNft, setOwnedNft] = useState<any[]>([]);
-   
+  
   const { contract, isLoading } = useContract(stakingContractAddress);
   const { data: ownedNfts } = useOwnedNFTs(nftDropContract, address);
   const { data: tokenBalance } = useTokenBalance(tokenContract, address);
@@ -120,18 +109,6 @@ function isListEmpty() {
     loadClaimableRewards();
   }, [address, contract]);
 
-  useEffect(() => {
-    if (!contract || !address) return;
-      async function pullNftInfo() {
-      const options = {method: 'GET', headers: {accept: 'application/json'}}; 
-      let response = await fetch(`https://eth-mainnet.g.alchemy.com/nft/v2/nLeTw4kEJZvFG5VNZY1TmgVXeI6cTdBM/getNFTs?owner=${address}&contractAddresses[]=${nftDropContractAddress}&withMetadata=true`, options)
-      .then(response => response.json())
-      .then(response => setOwnedNft(response.ownedNfts));
-      }
-      pullNftInfo();
-
-}, [address, contract]);
-
 
   async function stakeNft()   {
     var tokenIds = selected.map(Number)
@@ -150,7 +127,6 @@ function isListEmpty() {
     await contract?.call("stake", [tokenList]);
   }
 
-
   
   if (isLoading) {
     return <div>Loading</div>;
@@ -158,7 +134,6 @@ function isListEmpty() {
   const edited = true
 
   return (
-    
     
     <div className={styles.container}>
       <h1 className={styles.h1}>DOS TRASH BIRDS STAKING</h1>
