@@ -67,7 +67,6 @@ const Stake: NextPage = () => {
   const [claimableRewards, setClaimableRewards] = useState<BigNumber>();
   const [selected, setSelected] = useState<any[]>([]);  
   const [ownedNft, setOwnedNft] = useState<any[]>([]);
-  
   const { contract, isLoading } = useContract(stakingContractAddress);
   const { data: ownedNfts } = useOwnedNFTs(nftDropContract, address);
   const { data: tokenBalance } = useTokenBalance(tokenContract, address);
@@ -94,7 +93,7 @@ function clear() {
 return
 }
 
-// test if list is empty. Might need to check if the tokem id exists in the list 
+// test if list is empty. Might need to check if the token id exists in the list 
 function isListEmpty() {
   if (selected.length === 0) return true;
 }
@@ -127,10 +126,10 @@ function isListEmpty() {
     await contract?.call("stake", [tokenList]);
   }
 
-  
+ /* 
   if (isLoading) {
     return <div>Loading</div>;
-  }
+  }*/
   const edited = true
 
   return (
